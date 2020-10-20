@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trip Planner - Αρχαία Θέατρα της Ηπείρου</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Trip Planner - Αρχαία Θέατρα της Ηπείρου">
+	<meta name="author" content="Christos Chiotis">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+    <script src="https://get.mavo.io/mavo.js"></script>
+    <style type="text/css">
+    	.mv-add {
+    		display: none !important;
+    	}
+    	.mv-item-bar.mv-ui {
+    		bottom: 8px;
+    		right: 10px;
+    	}
+    	.mv-message:not(.mv-inline) {
+    		top: auto;
+    		bottom: 20px;
+    	}
+    </style>
+<div class="container mx-auto">
+	<div class="
+		grid h-screen
+		grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 
+		grid-rows-2 sm:grid-rows-2 md:grid-rows-2 lg:grid-rows-1 xl:grid-rows-1"
+	>
+		<div class="
+			p-4 overflow-y-scroll overflow-visible row-span-1
+			sm:h-full md:h-full lg:h-full xl:h-full" 
+			mv-app="destinationTheater" id='destinationTheater' mv-storage="https://repo.ancienttheatersofepirus.gr/wp-json/wp/v2/theatre" mv-mode="read" mv-bar="none">
+			<h2 class="font-bold">Επιλέξτε Θέατρα</h2>
+			<div class="w-full overflow-hidden shadow mt-4 cursor-pointer" property='acf' mv-multiple mv-action="add(acf, planner.destinations)">
+			  <img class="w-full" mv-value="[get(acf.image_gallery, 0)]" alt="[name_el]">
+			  <div class="px-4 py-3">
+			    <div class="font-bold" property="name_el"></div>
+			    <span property='latlong' mv-default="[latitude],[longitude]" class="hidden">...</span>
+			  </div>
+			</div>			
+		</div>
+
+		<div class="
+			p-4 overflow-y-scroll overflow-visible row-span-1
+			sm:h-full md:h-full lg:h-full xl:h-full" 
+			mv-app="destinationPoi" id='destinationPoi' mv-storage="https://repo.ancienttheatersofepirus.gr/wp-json/wp/v2/pois?per_page=100" mv-mode="read" mv-bar="none">
+			<h2 class="font-bold">Επιλέξτε Αξιοθέατα</h2>
+
+			<div class="w-full overflow-hidden shadow mt-4 cursor-pointer" property='acf' mv-multiple mv-action="add(acf, planner.destinations)">
+			  <img class="w-full" mv-value="[get(acf.image_gallery, 0)]" alt="[name_el]">
+			  <div class="px-4 py-3">
+			    <div class="font-bold" property="name_el"></div>
+			    <span class="inline-block bg-gray-200 rounded-full px-2 py-1 text-xs text-gray-700 mt-2" property='poi_category'></span>
+			    <span property='latlong' mv-default="[latitude],[longitude]" class="hidden">...</span>
+			  </div>
+			</div>	
+		</div>
+
+		<div class="
+			p-4 overflow-y-scroll overflow-visible 
+			row-span-2 
+			col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1 xl:col-span-1
+			sm:h-full md:h-full lg:h-full xl:h-full" 
+			mv-app="planner" id='routePlanner' mv-storage="local" mv-autosave="0" mv-mode="edit">
+			
+			<h2 class="font-bold">Επιλέξτε σειρά επίσκεψης</h2>
+			<div 
+				class="w-full shadow mt-4 bg-blue-100" 
+				property='destinations' mv-multiple>
+			  <div class="px-4 py-3">
+			    <div class="font-bold" property="name_el" mv-mode="read"></div>
+			    <p property="poi_category" mv-if="poi_category" mv-mode="read"></p>
+			    <span property='location' mv-default="[latitude],[longitude]" mv-mode="read" class="hidden">...</span>
+			  </div>
+			</div>
+
+			<div class="flex flex-wrap ">
+				<h2 class="font-bold block w-full my-6">Επιλέξτε Χαρακτηριστικά Διαδρομής</h2>
+				<div class="relative mr-4">
+					<select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer" id="grid-state" property="travelmode">
+						<option value="driving">Οδήγηση</option>
+						<option value="walking">Περπάτημα</option>
+						<option value="bicycling">Ποδήλατο</option>
+						<option value="transit">Μ.Μ.Μ.</option>
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+						<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+					</div>
+				</div>
+
+				<div class="relative mr-4">
+					<select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer" id="grid-state" property="origin">
+						<option value="My+Location">Η Τοποθεσία μου</option>
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+						<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+					</div>
+				</div>
+			</div>
+
+			<div class="container mx-auto mt-6">
+				<a 
+					href="https://www.google.com/maps/dir/?api=1&travelmode=[travelmode]&origin=[origin]&destination=[origin]&waypoints=[join(location, '|')]" 
+					target="_blank" 
+					class="w-full text-center block bg-blue-500 hover:bg-blue-700 text-white font-bold p-4">Δημιουργία Διαδρομής στο Google Maps</a>
+				<button class="w-full text-center block bg-transparent text-blue-700 font-semibold p-4 border border-blue-500" mv-action="delete(destinations)">Καθαρισμός Επιλεγμένων</button>
+			</div>
+			<!-- <pre>https://www.google.com/maps/dir/?api=1&travelmode=[travelmode]&origin=[origin]&destination=[origin]&waypoints=[join(location, '|')]</pre> -->
+		</div>
+	</div>
+</div>
+</body>
+</html>
