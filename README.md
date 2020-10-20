@@ -5,3 +5,9 @@ A trip / route planner, in association with Diazoma for the Cultural Routes of G
 Built using Mavo.io, TailwindCSS and AlpineJS
 
 The version for <strong>Ancient Theaters of Epirus</strong> cultural route can be found <a href="https://tripplanner.n6.myws.ca/epirus/mavo-planner.html" target="_blank">here</a>.
+
+---
+
+## Concept
+
+The concept of this tiny application is simple. Using Mavo.io we create 3 simple mavo-apps. The first two fetch the data from the Cultural Route repository API. One mavo-app for the Theaters content type and one mavo-app for the Points of Interest content type. Both are using the mv-add action to add the selected items to the third mavo-app. The third mavo-app is using local storage to create a list of both Theaters and Points of Interest. The user can change their order, change some settings related to the Google Maps Directions parameters and get a link for Google Map directions for the whole designed trip, starting from the user's current location.
