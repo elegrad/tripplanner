@@ -1,6 +1,6 @@
 # Trip Planner for Cultural Routes
 
-A trip / route planner, in association with Diazoma for the Cultural Routes of Greek perfectures.
+A trip / route planner, in association with <a href="https://diazoma.gr">Diazoma</a> for the Cultural Routes of Greek perfectures.
 
 Built using <a href="https://github.com/mavoweb/mavo">Mavo.io</a>, <a href="https://github.com/tailwindlabs/tailwindcss">TailwindCSS</a> and <a href="https://github.com/alpinejs/alpine">AlpineJS</a>
 
