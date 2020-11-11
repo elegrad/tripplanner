@@ -34,7 +34,7 @@
 			p-4 overflow-y-scroll overflow-visible row-span-1
 			sm:h-full md:h-full lg:h-full xl:h-full" 
 			mv-app="destinationTheater" id='destinationTheater' mv-storage="https://repo.ancienttheatersofepirus.gr/wp-json/wp/v2/theatre" mv-mode="read" mv-bar="none">
-			<h2 class="font-bold">Επιλέξτε Θέατρα</h2>
+			<h2 class="font-bold text-xl mb-6">Επιλέξτε Θέατρα</h2>
 			<div class="w-full overflow-hidden shadow mt-4 cursor-pointer" property='acf' mv-multiple mv-action="add(acf, planner.destinations)">
 			  <img class="w-full" mv-value="[get(acf.image_gallery, 0)]" alt="[name_el]">
 			  <div class="px-4 py-3">
@@ -48,7 +48,7 @@
 			p-4 overflow-y-scroll overflow-visible row-span-1
 			sm:h-full md:h-full lg:h-full xl:h-full" 
 			mv-app="destinationPoi" id='destinationPoi' mv-storage="https://repo.ancienttheatersofepirus.gr/wp-json/wp/v2/pois?per_page=100" mv-mode="read" mv-bar="none">
-			<h2 class="font-bold">Επιλέξτε Αξιοθέατα</h2>
+			<h2 class="font-bold text-xl mb-6">Επιλέξτε Αξιοθέατα</h2>
 
 			<div class="w-full overflow-hidden shadow mt-4 cursor-pointer" property='acf' mv-multiple mv-action="add(acf, planner.destinations)">
 			  <img class="w-full" mv-value="[get(acf.image_gallery, 0)]" alt="[name_el]">
@@ -67,7 +67,7 @@
 			sm:h-full md:h-full lg:h-full xl:h-full" 
 			mv-app="planner" id='routePlanner' mv-storage="local" mv-autosave="0" mv-mode="edit">
 			
-			<h2 class="font-bold">Επιλέξτε σειρά επίσκεψης</h2>
+			<h2 class="font-bold text-xl mb-6">Επιλέξτε σειρά επίσκεψης</h2>
 			<div 
 				class="w-full shadow mt-4 bg-blue-100" 
 				property='destinations' mv-multiple>
